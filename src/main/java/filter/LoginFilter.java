@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/*")
+@WebFilter(urlPatterns = {"/*"})
+
 public class LoginFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -20,11 +21,14 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/login";
+        String registerURI = request.getContextPath() + "/register";
 
         boolean isLogged = session != null && session.getAttribute("user") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
+        boolean registerRequest = request.getRequestURI().equals(registerURI);
+        boolean publicResources = request.getRequestURI().endsWith(".css") || request.getRequestURI().endsWith(".js");
 
-        if(isLogged || loginRequest) {
+        if(isLogged || loginRequest || registerRequest || publicResources) {
             chain.doFilter(request, response);
         }
         else {

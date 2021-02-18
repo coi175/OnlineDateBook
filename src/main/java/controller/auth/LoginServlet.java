@@ -1,9 +1,10 @@
-package controller;
+package controller.auth;
 
 import model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,30 +26,19 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        Map<String, String> messages = new HashMap<String, String>();
+        String message;
 
-        if (username == null || username.isEmpty()) {
-            messages.put("username", "Please enter username");
+        User user = (username.equals("admin") && password.equals("admin")) ? new User("admin", "admin", "") : null;
+
+        if (user != null) {
+            req.getSession().setAttribute("user", user);
+            resp.sendRedirect(req.getContextPath() + "/home");
+            return;
+        } else {
+            message = "Invalid login or password";
         }
-
-        if (password == null || password.isEmpty()) {
-            messages.put("password", "Please enter password");
-        }
-
-        if (messages.isEmpty()) {
-            User user = (username.equals("admin") && password.equals("admin")) ? new User("admin", "admin") : null;
-
-            if (user != null) {
-                req.getSession().setAttribute("user", user);
-                resp.sendRedirect(req.getContextPath() + "/home");
-                return;
-            } else {
-                messages.put("login", "Unknown login, please try again");
-            }
-        }
-
-        req.setAttribute("messages", messages);
+        req.setAttribute("message", message);
         req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
-
     }
+
 }
