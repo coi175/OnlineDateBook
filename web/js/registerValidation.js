@@ -1,7 +1,17 @@
+/**
+ * This function checks all fields of form when user try to submit it.
+ * @param form_id
+ * @returns {boolean}
+ */
 function validate(form_id) {
     return !!(validate_email(form_id) && validate_username(form_id) && validate_password_match(form_id) && validate_password(form_id));
 }
 
+/**
+ *  Function for validate e-mail address. It is used in validate() function and in e-mail field in attribute onchange.
+ * @param form_id
+ * @returns {boolean}
+ */
 function validate_email(form_id) {
     var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     var address = document.forms[form_id].elements['email'].value;

@@ -4,14 +4,12 @@ import model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
@@ -24,21 +22,33 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/plain");
+        resp.setCharacterEncoding("UTF-8");
+
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String message;
-
         User user = (username.equals("admin") && password.equals("admin")) ? new User("admin", "admin", "") : null;
 
-        if (user != null) {
-            req.getSession().setAttribute("user", user);
-            resp.sendRedirect(req.getContextPath() + "/home");
-            return;
-        } else {
-            message = "Invalid login or password";
+
+        boolean ajax = "XMLHttpRequest".equals(req.getHeader("X-Requested-With"));
+        if(ajax) {
+            if(user != null) {
+                req.getSession().setAttribute("user", user);
+                resp.getWriter().write("Success");
+            }
+            else {
+                resp.getWriter().write("Invalid login or password");
+            }
         }
-        req.setAttribute("message", message);
-        req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
+        else {
+            if(user != null) {
+                req.getSession().setAttribute("user", user);
+                resp.sendRedirect("/home");
+            }
+            req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
+        }
+
     }
 
 }

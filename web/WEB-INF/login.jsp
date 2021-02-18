@@ -11,27 +11,37 @@
 <head>
     <title>Sign In | DateBook</title>
     <link href="${contextPath}css/login.css" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
+        $(document).on("submit", "#login_form_id", function(event) {
+            var $form = $(this);
 
-        function init() {
-            document.getElementById("error_message_s").value = "";
-        }
-        window.onload = init;
+            $.post($form.attr("action"), $form.serialize(), function(response) {
+                if(response === "Success") {
+                    window.location.href='/home';
+                }
+                else {
+                    $("#error_message_s").text(response);
+                }
+            });
+
+            event.preventDefault(); // Important! Prevents submitting the form.
+        });
     </script>
 </head>
 <body>
-    <form id="login_form_id" class="login_form" action="login" method="post" onsubmit="">
+    <form id="login_form_id" class="login_form" action="login">
         <h1 class="form_title">Sign in</h1>
         <div class="form_grup">
-            <input class="form_input" placeholder=" " type="text" name="username">
+            <input id="login_username" class="form_input" placeholder=" " type="text" name="username">
             <label class="form_label">Username</label>
         </div>
         <div class="form_grup">
-            <input class="form_input" placeholder=" " type="password" name="password">
+            <input id="login_password"  class="form_input" placeholder=" " type="password" name="password">
             <label class ="form_label">Password</label>
         </div>
 
-        <p class="error_message" id="error_message_s">${message}</p>
+        <p class="error_message" id="error_message_s"></p>
 
         <button class ="form_button form_login_button" type = "submit">Login</button>
         <button class ="form_button form_register_button" type="button" onclick="location.href='/register'">Sign up</button>
