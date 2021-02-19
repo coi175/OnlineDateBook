@@ -21,7 +21,7 @@
                     window.location.href='/home';
                 }
                 else {
-                    $("#error_message_s").text(response);
+                    $("#error_message_login").text(response);
                 }
             });
 
@@ -32,16 +32,16 @@
 <body>
     <form id="login_form_id" class="login_form" action="login">
         <h1 class="form_title">Sign in</h1>
-        <div class="form_grup">
+        <div class="form_group">
             <input id="login_username" class="form_input" placeholder=" " type="text" name="username">
             <label class="form_label">Username</label>
         </div>
-        <div class="form_grup">
+        <div class="form_group">
             <input id="login_password"  class="form_input" placeholder=" " type="password" name="password">
             <label class ="form_label">Password</label>
         </div>
 
-        <p class="error_message" id="error_message_s"></p>
+        <p id="error_message_login" class="error_message"></p>
 
         <button class ="form_button form_login_button" type = "submit">Login</button>
         <button class ="form_button form_register_button" type="button" onclick="location.href='/register'">Sign up</button>

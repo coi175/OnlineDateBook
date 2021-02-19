@@ -53,12 +53,12 @@ body {
     border-radius: 5px;
     padding: 9px 10px;
 }
-.form_grup {
+.form_group {
     position: relative;
     margin-bottom: 32px;
 }
 
-.form_grup:last-of-type {
+.form_group:last-of-type {
     margin-bottom: 15px;
 }
 

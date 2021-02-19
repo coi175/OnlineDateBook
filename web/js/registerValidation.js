@@ -1,11 +1,12 @@
 /**
- * This function checks all fields of form when user try to submit it.
+ * This function checks all fields of form when user try to submit it (deprecated, because ajax was added
  * @param form_id
  * @returns {boolean}
  */
-function validate(form_id) {
+/* function validate(form_id) {
     return !!(validate_email(form_id) && validate_username(form_id) && validate_password_match(form_id) && validate_password(form_id));
 }
+*/
 
 /**
  *  Function for validate e-mail address. It is used in validate() function and in e-mail field in attribute onchange.
@@ -42,7 +43,7 @@ function validate_password(form_id) {
     var password = document.forms[form_id].elements['password'].value;
     var doc =   document.getElementById("password_error");
     if(!reg.test(password)) {
-        doc.textContent = "Password is invalid. It must have at least 8 symbols";
+        doc.textContent = "Password is invalid. It must has at least 8 symbols and Upper case letters";
         return false;
     }
     doc.textContent = "";

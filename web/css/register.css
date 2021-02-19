@@ -42,11 +42,11 @@ body {
     transition: 0.3s;
 }
 
-.form_button:last-of-type {
+.form_group:last-of-type {
     margin-bottom: 26px;
 }
 
-.form_grup {
+.form_group {
     position: relative;
     margin-bottom: 32px;
 }
