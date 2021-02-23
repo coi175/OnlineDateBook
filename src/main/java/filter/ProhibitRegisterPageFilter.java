@@ -23,7 +23,7 @@ public class ProhibitRegisterPageFilter implements Filter {
         boolean isRegistered = session != null && session.getAttribute("isRegistered") != null;
         boolean isLogged = session != null && session.getAttribute("user") != null;
 
-        if(!isRegistered || !isLogged) {
+        if(!isRegistered && !isLogged) {
             chain.doFilter(request, response);
         }
         else {
