@@ -14,24 +14,32 @@
     <script src="../js/registerValidation.js"></script>
     <script>
         $(document).on("submit", "#register_form_id", function(event) {
-            var $form = $(this);
+            let $form = $(this);
 
             $.post($form.attr("action"), $form.serialize(), function(response) {
-                if(response === "Success") {
-                    window.location.href='/login';
-                }
-                else {
-                    $("#error_message_register").text(response);
+                let map = new Map();
+                $.each(response, function (key, value) {
+                    map.set(key, value);
+                });
+
+                $("#username_error").text((map.get("isValidUsername") === true) ? "" : "Username is invalid");
+                $("#email_error").text((map.get("isValidEmail") === true) ? "" : "E-mail is invalid");
+                $("#password_error").text((map.get("isValidPassword") === true) ? "" : "Password is invalid. It must has at least 8 symbols and Upper case letters");
+                $("#password_match_error").text((map.get("isValidPasswordMatch") === true) ? "" : "Passwords don't match");
+
+                if (map.get("message") === true) {
+                    window.location.href = '/login';
+                } else {
+                    $("#error_message_register").text((map.get("userNotExist")) ? "" : "User already registered");
                 }
             });
-
-            event.preventDefault(); // Important! Prevents submitting the form.
+            event.preventDefault();
         });
     </script>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 <body>
-<form id="register_form_id" class="register_form" action="register" method="post" onsubmit="">
+<form id="register_form_id" class="register_form" method="post" onsubmit="">
     <h1 class="form_title">Sign up</h1>
     <div class="form_group">
         <input class="form_input" placeholder=" " type="text" name="username" onchange="validate_username('register_form_id')">

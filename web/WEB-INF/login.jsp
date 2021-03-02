@@ -10,12 +10,11 @@
 <html>
 <head>
     <title>Sign In | DateBook</title>
-    <link href="${contextPath}css/login.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
         $(document).on("submit", "#login_form_id", function(event) {
-            var $form = $(this);
-
+            let $form = $(this);
             $.post($form.attr("action"), $form.serialize(), function(response) {
                 if(response === "Success") {
                     window.location.href='/home';
@@ -25,7 +24,7 @@
                 }
             });
 
-            event.preventDefault(); // Important! Prevents submitting the form.
+            event.preventDefault();
         });
     </script>
 </head>
