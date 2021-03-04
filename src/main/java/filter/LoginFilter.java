@@ -22,13 +22,15 @@ public class LoginFilter implements Filter {
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/login";
         String registerURI = request.getContextPath() + "/register";
+        String startPageURI = request.getContextPath() + "/";
 
         boolean isLogged = session != null && session.getAttribute("user") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
+        boolean startPageRequest = request.getRequestURI().equals(startPageURI);
         boolean registerRequest = request.getRequestURI().equals(registerURI);
-        boolean publicResources = request.getRequestURI().endsWith(".css") || request.getRequestURI().endsWith(".js");
+        boolean publicResources = request.getRequestURI().endsWith(".css") || request.getRequestURI().endsWith(".js") || request.getRequestURI().endsWith(".jpg");
 
-        if(isLogged || loginRequest || registerRequest || publicResources) {
+        if(isLogged || loginRequest || registerRequest || publicResources || startPageRequest) {
             chain.doFilter(request, response);
         }
         else {

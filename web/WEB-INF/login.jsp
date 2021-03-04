@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <title>Sign In | DateBook</title>
+    <title>Sign In | DateBook Online</title>
     <link href="../css/login.css" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>

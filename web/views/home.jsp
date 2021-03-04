@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Home | OnlineDateBook</title>
+    <title>Home | DateBook Online</title>
 </head>
 <body>
     <H2>It's your DateBook</H2>

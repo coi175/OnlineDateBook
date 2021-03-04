@@ -3,12 +3,12 @@
   User: coi
   Date: 2/16/21
   Time: 3:52 PM
-  To change this template use File | Settings | File Templates.
+  To change this template use File | Settings S| File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Sign up | DateBook</title>
+    <title>Sign up | DateBook Online</title>
     <link rel="stylesheet" href="../css/register.css" type="text/css"/>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="../js/registerValidation.js"></script>

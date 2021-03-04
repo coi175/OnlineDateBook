@@ -1,0 +1,9 @@
+.my_header {
+    background: url("../resources/header_bg.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.my_image {
+    width: 400px;
+    margin-left: 50px;
+}
