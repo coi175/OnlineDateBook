@@ -1,5 +1,7 @@
 package controller.auth;
 
+import dao.user.UserDao;
+import model.PasswordSecurityService;
 import model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
@@ -24,10 +28,22 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain");
         resp.setCharacterEncoding("UTF-8");
+        UserDao userDao = new UserDao();
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        User user = (username.equals("admin") && password.equals("admin")) ? new User("admin", "admin", "") : null;
+        User user = userDao.getUserByUsername(username);
+
+        try {
+            boolean matches = PasswordSecurityService.validatePassword(password, user.getPassword());
+            if(!matches) {
+                user = null;
+            }
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
 
 
         boolean ajax = "XMLHttpRequest".equals(req.getHeader("X-Requested-With"));

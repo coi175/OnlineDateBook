@@ -1,9 +1,9 @@
-package service;
+package model;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ValidationService {
+public final class ValidationService {
     public static boolean validateUsername(String username) {
         String regex = "^[a-zA-Z0-9]+$";
         Pattern pattern = Pattern.compile(regex);

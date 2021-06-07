@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter(urlPatterns = {"/*"})
-
 public class LoginFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -22,15 +21,15 @@ public class LoginFilter implements Filter {
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/login";
         String registerURI = request.getContextPath() + "/register";
-        String startPageURI = request.getContextPath() + "/";
+        //String startPageURI = request.getContextPath() + "/";
 
         boolean isLogged = session != null && session.getAttribute("user") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
-        boolean startPageRequest = request.getRequestURI().equals(startPageURI);
+        //boolean startPageRequest = request.getRequestURI().equals(startPageURI);
         boolean registerRequest = request.getRequestURI().equals(registerURI);
         boolean publicResources = request.getRequestURI().endsWith(".css") || request.getRequestURI().endsWith(".js") || request.getRequestURI().endsWith(".jpg");
 
-        if(isLogged || loginRequest || registerRequest || publicResources || startPageRequest) {
+        if(isLogged || loginRequest || registerRequest || publicResources /*|| startPageRequest*/) {
             chain.doFilter(request, response);
         }
         else {

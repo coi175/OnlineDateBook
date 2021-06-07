@@ -1,4 +1,4 @@
-package service;
+package model;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
-public class PasswordSecurityService {
+public final class PasswordSecurityService {
     /*
     public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException {
         String password = "admin";
