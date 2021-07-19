@@ -1,0 +1,134 @@
+body {
+    font-family: Roboto, serif;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    margin: 10px auto;
+}
+.card_container {
+    justify-content: space-between;
+    min-height: 65vh;
+    max-height: 65vh;
+}
+
+.container {
+    position: relative;
+}
+
+.card {
+    height: 100%;
+    background-color: azure;
+    border-radius: 15px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.tasks {
+    height: 80%;
+    overflow-y: auto;
+}
+
+progress {
+    background-color: #f3f3f3;
+    margin: 5px;
+    height: 25px;
+    border-radius: 15px;
+}
+
+progress::-webkit-progress-bar {
+    border-radius: 15px;
+}
+progress::-webkit-progress-value {
+    border-radius: 15px 0 0 15px;
+}
+progress::-moz-progress-bar {
+    border-radius: 15px 0 0 15px;
+    background: #0071f0;
+}
+
+.card_switcher {
+    display: none;
+    margin-top: 20px;
+}
+
+.card_switcher_container {
+    display: flex;
+    justify-content: center;
+}
+
+.task_screen_container {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 50px;
+}
+
+.task_screen {
+    margin: 50px auto;
+    width: 60vh;
+    height: 60vh;
+    background: white;
+}
+
+.add_task_button {
+    border: none;
+    border-radius: 0 0 15px 15px;
+    padding: 10px 20px;
+    color :#fff ;
+    background-color: #0071f0;
+}
+
+.add_task_button:hover {
+    background-color: rgba(0, 113, 240, 0.7);
+}
+
+.change_button {
+    margin: 15px;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #0071f0;
+}
+
+.change_button:hover {
+    border: none;
+    outline: none;
+    background-color: rgba(0, 113, 240, 0.7);
+}
+
+.change_button:focus {
+    border: none;
+    outline: none;
+    background: skyblue;
+}
+
+@media all and (max-width: 1000px) and (min-width: 900px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media all and (max-width: 900px) {
+    .card_switcher {
+        display: block;
+    }
+
+    #yesterday {
+        display: none;
+    }
+
+    #tomorrow {
+        display: none;
+    }
+
+    .card {
+        max-width: 350px;
+        width: 90%;
+        margin: 0 auto;
+    }
+}
