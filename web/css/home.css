@@ -29,6 +29,54 @@ h3 {
     overflow-y: auto;
 }
 
+p {
+    margin: 0;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: dodgerblue;
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+
+.task_buttons {
+    align-self: center;
+}
+
+.task_button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    background-color: dodgerblue;
+}
+
+.task_button:hover {
+    outline: none;
+    border: none;
+    background-color: rgba(0, 113, 240, 0.7);
+}
+
+.task_button:focus {
+    outline: none;
+}
+
+.task_text {
+    width: 75%;
+    align-self: center;
+}
+
+.task_id {
+    display: none;
+}
+
 progress {
     background-color: #f3f3f3;
     margin: 5px;
@@ -65,13 +113,17 @@ progress::-moz-progress-bar {
     height: 100%;
     width: 100%;
     padding: 50px;
+    z-index: 6;
 }
 
 .task_screen {
+    background-color: azure;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     margin: 50px auto;
     width: 60vh;
     height: 60vh;
-    background: white;
 }
 
 .add_task_button {
@@ -105,6 +157,99 @@ progress::-moz-progress-bar {
     border: none;
     outline: none;
     background: skyblue;
+}
+
+.fault_icon {
+    color: #ba0101;
+    font-size: 20px !important;
+}
+.fault_task {
+    border: 1px solid #ba0101;
+    box-shadow: 0 0 4px #ba0101;
+    background: #1e7ad4;
+}
+.fa {
+    font-size: 20px !important;
+}
+
+.success_icon {
+    color: #8fff63;
+    font-size: 20px !important;
+    padding: 0 2px;
+}
+
+.success_task {
+    border: 1px solid #31a701;
+    box-shadow: 0 0 4px #32ad00;
+}
+
+.task_text_crossed_out {
+    text-decoration: line-through;
+    color: #424242;
+}
+
+#layer {
+    position: absolute;
+    display: none;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 5;
+}
+
+.create_task_close_button {
+    background: none;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    color: black;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.close_button_block {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.task_block_close_icon {
+    font-size: 25px !important;
+}
+
+.create_task_close_button:hover {
+    color: #003c7d;
+}
+
+.text_area_block {
+    height: 70%;
+}
+.task_description_input {
+    width: 90%;
+    height: 90%;
+    resize: none;
+    border-radius: 15px;
+}
+
+.task_title_input {
+    margin-left: 10px;
+    border-radius: 5px;
+}
+.task_time_input {
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+#task_day {
+    display: none;
+}
+
+#edit_task_id {
+    display: none;
 }
 
 @media all and (max-width: 1000px) and (min-width: 900px) {
