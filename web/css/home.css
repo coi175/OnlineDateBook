@@ -19,6 +19,7 @@ h3 {
 
 .card {
     height: 100%;
+    max-width: 350px;
     background-color: azure;
     border-radius: 15px;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
@@ -37,9 +38,10 @@ p {
     display: flex;
     justify-content: space-between;
     width: 95%;
+    min-height: 70px;
     margin-left: 10px;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 0 10px 0 10px ;
     background: dodgerblue;
     border-radius: 8px;
     box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
@@ -71,6 +73,9 @@ p {
 .task_text {
     width: 75%;
     align-self: center;
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .task_id {
@@ -79,8 +84,8 @@ p {
 
 progress {
     background-color: #f3f3f3;
-    margin: 5px;
-    height: 25px;
+    margin: 0 5px 5px 5px;
+    height: 30px;
     border-radius: 15px;
 }
 
@@ -88,10 +93,10 @@ progress::-webkit-progress-bar {
     border-radius: 15px;
 }
 progress::-webkit-progress-value {
-    border-radius: 15px 0 0 15px;
+    border-radius: 15px;
 }
 progress::-moz-progress-bar {
-    border-radius: 15px 0 0 15px;
+    border-radius: 15px;
     background: #0071f0;
 }
 
@@ -251,6 +256,44 @@ progress::-moz-progress-bar {
 #edit_task_id {
     display: none;
 }
+
+.delete_task_button {
+    border: none;
+    border-radius: 0 0 15px 15px;
+    padding: 10px 20px;
+    color :#fff ;
+    background-color: #9a0808;
+}
+
+.delete_task_button:hover {
+    background-color: rgb(203, 3, 30);
+}
+
+.task:hover {
+    background: #1e90ff;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+}
+
+
+.show_div_block {
+    overflow-y: auto;
+    max-height: 20%;
+}
+
+.show_div_block_description {
+    max-height: 60%;
+}
+
+#show_task_title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#show_task_id {
+    display: none;
+}
+
+
 
 @media all and (max-width: 1000px) and (min-width: 900px) {
     .container {

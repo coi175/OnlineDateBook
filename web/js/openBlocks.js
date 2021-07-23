@@ -27,4 +27,15 @@ function editTaskClose() {
     $("#edit_task_block").hide();
     $("#layer").hide();
 }
+
 // show task block
+function openShowTaskBlock(dv) {
+    $("#show_task_block").show();
+    $("#layer").show();
+    getTaskInfoForShowing(dv);
+}
+
+function editShowClose() {
+    $("#show_task_block").hide();
+    $("#layer").hide();
+}

@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script src="../js/openBlocks.js"></script>
     <script src="../js/manageTasks.js"></script>
@@ -29,32 +32,10 @@
                 <div class="card">
                     <h3>Yesterday</h3>
                     <div class="tasks col">
-                        <div class="row task fault_task">
-                            <div class="task_id">
 
-                            </div>
-                            <div class="task_text">
-                                <p>текст sdfssd sdf sdfsdf sf ddsfsdlksdkfjsdklfjsdk</p>
-                            </div>
-                            <div class="task_buttons">
-                                <p><i class="fa fa-window-close fault_icon"></i></p>
-                            </div>
-                        </div>
-
-                        <div class="row task success_task">
-                            <div class="task_id">
-
-                            </div>
-                            <div class="task_text">
-                                <p>текст sdfssd sdf sdfsdf sf ddsfsdlksdkfjsdklfjsdk</p>
-                            </div>
-                            <div class="task_buttons">
-                                <p><i class="fa fa-check-square success_icon"></i></p>
-                            </div>
-                        </div>
                     </div>
 
-                    <progress value="50" max="100"></progress>
+                    <progress id="task_progress" value="50" max="100"></progress>
                 </div>
             </div>
 
@@ -63,32 +44,6 @@
                <div class="card">
                    <h3>Today</h3>
                    <div class="tasks col">
-                       <div class="row task">
-                           <div class="task_id">1</div>
-                           <div class="task_text">
-                               <p>текст sdfssd sdf sdfsdf sf ddsfsdlksdkfjsdklfjsdk</p>
-                           </div>
-                           <div class="task_buttons">
-                               <button onclick="openEditTaskBlock(this)" class="task_button">
-                                   <i class="fa fa-pencil"></i>
-                               </button>
-                               <button class="task_button">
-                                   <i class="fa fa-check"></i>
-                               </button>
-                           </div>
-                       </div>
-
-                       <div class="row task">
-                           <div class="task_id">2</div>
-                           <div class="task_text">
-                               <p class="task_text_crossed_out">текст sdfssd sdf sdfsdf sf ddsfsdlksdkfjsdklfjsdk</p>
-                           </div>
-                           <div class="task_buttons">
-                               <button class="task_button">
-                                   <i class="fa fa-close"></i>
-                               </button>
-                           </div>
-                       </div>
                    </div>
                    <button class="add_task_button" onclick="openCreateTaskBlockToday(this)">Add task</button>
                </div>
@@ -121,7 +76,7 @@
                </div>
                <div class="row mb-2">
                    <label for="create_task_title_input">Task title:</label>
-                   <input type="text" id="create_task_title_input" class="task_title_input">
+                   <input type="text" id="create_task_title_input" maxlength="100" class="task_title_input">
                </div>
                <div class="row text_area_block mb-2">
                    <label for="create_task_desctiption_input">Task description: <br></label>
@@ -165,15 +120,27 @@
 
        <!-- SHOW TASK BLOCK -->
        <div id="show_task_block" class="task_screen_container">
-           <div class="edit_task_screen">
-               что-то там
+           <div class="task_screen col">
+               <div class="close_button_block mb-2">
+                   <button class="create_task_close_button" onclick="editShowClose()"><i class="fa fa-close task_block_close_icon"></i></button>
+               </div>
+               <div class="row show_div_block mb-2">
+                   <p id="show_task_title">Какое-то название очень длинное и всё такое бла бла бла бла бла </p>
+               </div>
+               <div class="row show_div_block_description mb-2">
+                   <p id="show_task_description"> Описание, описание, описание описание, описаниеописание, описаниеописание, описаниеописание, описаниеописание, описаниеописание, описание</p>
+               </div>
+               <div class="row show_div_block_time mb-4">
+                   <p id="show_task_time">11:04 AM</p>
+               </div>
+               <div class="row d-flex">
+                   <button class="delete_task_button" onclick="deleteTask(this)">Delete task</button>
+               </div>
+               <div id="show_task_id"></div>
            </div>
        </div>
    </div>
 
     <div id="layer"></div>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -22,6 +22,7 @@ import java.util.Date;
 public class CreateTaskServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         TaskDao taskDao = new TaskDao();
         JsonObject data = new Gson().fromJson(req.getReader(), JsonObject.class);
         String title = data.get("title").getAsString();
