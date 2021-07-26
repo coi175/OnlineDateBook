@@ -4,9 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Util class for connecting to database with JDBC
+ */
 public class DaoConnectionManager {
     private static Connection connection = null;
 
+    // all needed information for connection
     private static String DRIVER = "org.mariadb.jdbc.Driver";
     private static String URL = "jdbc:mysql://localhost:3306/datebook";
     private static String USERNAME = "coi";

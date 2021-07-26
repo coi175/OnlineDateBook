@@ -13,12 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Servlet that handles the user's request to get list of task
+ */
 @WebServlet(name = "GetAllTasksServlet", urlPatterns = "/getAllTasks")
 public class GetAllTasksServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TaskDao taskDao = new TaskDao();
 
+        // get user from session to get user id and use it in the request to database
         User user = (User) req.getSession().getAttribute("user");
         List<Task> tasks = taskDao.getAllTaskByUser(user.getId());
 

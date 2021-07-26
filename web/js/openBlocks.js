@@ -39,3 +39,23 @@ function editShowClose() {
     $("#show_task_block").hide();
     $("#layer").hide();
 }
+
+// switcher when screen so small for all 3 blocks (today, yesterday and tomorrow)
+function showYesterday() {
+    $("#yesterday").show();
+    $("#today").hide();
+    $("#tomorrow").hide();
+    $(".to_yesterday").focus();
+}
+function showToday() {
+    $("#yesterday").hide();
+    $("#today").show();
+    $("#tomorrow").hide();
+    $(".to_today").focus();
+}
+function showTomorrow() {
+    $("#yesterday").hide();
+    $("#today").hide();
+    $("#tomorrow").show();
+    $(".to_tomorrow").focus();
+}

@@ -18,16 +18,23 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Servlet that handles the user's request to create a new task
+ */
 @WebServlet(name = "CreateTaskServlet", urlPatterns = "/createTask")
 public class CreateTaskServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        // Create new TaskDao to work with database with JDBC
         TaskDao taskDao = new TaskDao();
+        // Create new json object which get data from client
         JsonObject data = new Gson().fromJson(req.getReader(), JsonObject.class);
+        // Get data from json object
         String title = data.get("title").getAsString();
         String description = data.get("description").getAsString();
 
+        // parse time to into the desired format
         SimpleDateFormat parser = new SimpleDateFormat("hh:mm");
         Time time = null;
         try {
@@ -37,7 +44,7 @@ public class CreateTaskServlet extends HttpServlet {
         }
         String day = data.get("day").getAsString();
 
-        // state of task (new)
+        // create state of task (new task = usually)
         String state = "usually";
 
         // calculate date of task

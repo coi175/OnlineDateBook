@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Filter that prohibit to enter to login page if user already log in
+ */
 @WebFilter(urlPatterns = {"/login"})
 public class ProhibitLoginPageFilter implements Filter {
     @Override
@@ -22,10 +25,13 @@ public class ProhibitLoginPageFilter implements Filter {
 
         boolean isLogged = session != null && session.getAttribute("user") != null;
 
+        // if user don't log in
         if(!isLogged) {
+            // he can enter to login page
             chain.doFilter(request, response);
         }
         else {
+            // else app will redirect to the /home page
             response.sendRedirect("/home");
         }
     }

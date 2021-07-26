@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Filter that prohibit to enter to the register page if user already registered or log in
+ */
 @WebFilter(urlPatterns = {"/register"})
 public class ProhibitRegisterPageFilter implements Filter {
     @Override
@@ -23,10 +26,12 @@ public class ProhibitRegisterPageFilter implements Filter {
         boolean isRegistered = session != null && session.getAttribute("isRegistered") != null;
         boolean isLogged = session != null && session.getAttribute("user") != null;
 
+        // if user don't registered or log in he can enter to register page
         if(!isRegistered && !isLogged) {
             chain.doFilter(request, response);
         }
         else {
+            // else app will redirect to /home page
             response.sendRedirect("/home");
         }
     }

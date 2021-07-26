@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Servlet that handles the user's request to change status of task (unmark task)
+ */
 @WebServlet(name = "UnmarkTaskServlet", urlPatterns = "/unmarkTask")
 public class UnmarkTaskServlet extends HttpServlet {
     @Override

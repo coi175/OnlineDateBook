@@ -2,10 +2,31 @@ body {
     font-family: Roboto, serif;
     margin: 0;
     padding: 0;
+    background: url("../resources/fon.jpg") no-repeat top / cover;
+    height: 100%;
 }
 
 h3 {
-    margin: 10px auto;
+    margin: 15px auto 20px;
+    color: white;
+    padding: 5px 10px;
+    box-shadow: 1px 1px 3px black;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    color: white;
+    padding: 10px;
+    box-shadow: 1px 1px 3px black;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.title {
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top: 20px;
 }
 .card_container {
     justify-content: space-between;
@@ -20,9 +41,9 @@ h3 {
 .card {
     height: 100%;
     max-width: 350px;
-    background-color: azure;
+    background-color: #8db3b3;
     border-radius: 15px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 
 .tasks {
@@ -40,11 +61,22 @@ p {
     width: 95%;
     min-height: 70px;
     margin-left: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
     padding: 0 10px 0 10px ;
     background: dodgerblue;
     border-radius: 8px;
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    box-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+
+
+.task:hover {
+    background: #1e90ff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+input, textarea {
+    background-color: #d9ffff;
 }
 
 
@@ -83,7 +115,7 @@ p {
 }
 
 progress {
-    background-color: #f3f3f3;
+    background-color: #d7d7d7;
     margin: 0 5px 5px 5px;
     height: 30px;
     border-radius: 15px;
@@ -108,6 +140,7 @@ progress::-moz-progress-bar {
 .card_switcher_container {
     display: flex;
     justify-content: center;
+
 }
 
 .task_screen_container {
@@ -122,7 +155,7 @@ progress::-moz-progress-bar {
 }
 
 .task_screen {
-    background-color: azure;
+    background-color: #8db3b3;
     padding: 40px;
     border-radius: 15px;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
@@ -152,17 +185,12 @@ progress::-moz-progress-bar {
     background-color: #0071f0;
 }
 
-.change_button:hover {
-    border: none;
-    outline: none;
-    background-color: rgba(0, 113, 240, 0.7);
-}
-
 .change_button:focus {
     border: none;
     outline: none;
     background: skyblue;
 }
+
 
 .fault_icon {
     color: #ba0101;
@@ -200,7 +228,7 @@ progress::-moz-progress-bar {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.5);
+    background: rgba(0,0,0,0.7);
     z-index: 5;
 }
 
@@ -269,11 +297,6 @@ progress::-moz-progress-bar {
     background-color: rgb(203, 3, 30);
 }
 
-.task:hover {
-    background: #1e90ff;
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
-}
-
 
 .show_div_block {
     overflow-y: auto;
@@ -289,6 +312,10 @@ progress::-moz-progress-bar {
     font-weight: bold;
 }
 
+#show_task_description {
+    max-width: 100%;
+}
+
 #show_task_id {
     display: none;
 }
@@ -298,6 +325,31 @@ progress::-moz-progress-bar {
 @media all and (max-width: 1000px) and (min-width: 900px) {
     .container {
         max-width: 960px;
+    }
+}
+
+@media all and (max-width: 1200px) {
+    .task_text {
+        width: 70%;
+    }
+}
+
+@media all and (max-width: 460px) {
+    .task_text {
+        width: 65%;
+    }
+    .text_area_block {
+        height: 60%;
+        margin-bottom: 20px !important;
+    }
+    .task_description_input {
+        width: 90%;
+    }
+    .task_screen {
+        padding: 30px;
+    }
+    .task_screen_container {
+        padding: 50px 15px 50px 15px;
     }
 }
 

@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Servlet that handles the user's request to delete a task
+ */
 @WebServlet(name = "DeleteTaskServlet", urlPatterns = "/deleteTask")
 public class DeleteTaskServlet extends HttpServlet {
     @Override

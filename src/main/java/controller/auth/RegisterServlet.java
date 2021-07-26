@@ -18,6 +18,9 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Servlet that handles the user's request to register a new account
+ */
 @WebServlet(name="RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     UserDao userDao;
@@ -51,7 +54,7 @@ public class RegisterServlet extends HttpServlet {
         if(ajax) {
             responseJson.put("isValidUsername", ValidationService.validateUsername(username));
             responseJson.put("isValidEmail", ValidationService.validateEmail(email));
-            //responseJson.put("userNotExist", !isAlreadyExist(username, email));
+            responseJson.put("userNotExist", !isAlreadyExist(username, email));
 
             if(!responseJson.containsValue(false)) {
                 req.getSession().setAttribute("isRegistered", true);
@@ -73,7 +76,7 @@ public class RegisterServlet extends HttpServlet {
 
     private boolean isAlreadyExist(String username, String email) {
         User user = userDao.getUserByUsername(username);
-        if(user != null && user.getName().equals(username) || user.getEmail().equals(email)) {
+        if(user != null && user.getName().equals(username) || user != null && user.getEmail().equals(email)) {
             return true;
         }
         return false;

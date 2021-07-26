@@ -19,10 +19,15 @@ public class TaskDao {
     private static final String SELECT_TASKS_BY_USER_ID = "select * from tasks where user_id = ?";
     private static final String EDIT_TASK_STATE_SQL = "UPDATE tasks SET state = ? WHERE id = ?";
     private static final String DELETE_TASK_BY_ID = "DELETE FROM tasks WHERE id = ?";
+
     public TaskDao() {
         connection = DaoConnectionManager.getConnection();
     }
 
+    /**
+     * Method that adds a new task to the database
+     * @param task
+     */
     public void addTask(Task task) {
         try(PreparedStatement preparedStatement = connection.prepareStatement(INSERT_TASK_SQL)) {
             preparedStatement.setString(1, task.getTitle());
@@ -38,7 +43,7 @@ public class TaskDao {
     }
 
     /**
-     * Get all info about task from database
+     * Method that gets one task from the database
      * @param id
      * @return
      */
@@ -65,7 +70,7 @@ public class TaskDao {
     }
 
     /**
-     * Function for editing information about task in database
+     * Method that edits information about task in the database
      * @param task
      */
     public void editTask(Task task) {
@@ -81,7 +86,7 @@ public class TaskDao {
     }
 
     /**
-     * Function which get all tasks from database
+     * Method that gets all task from the database by user's id
      * @param userId
      * @return
      */
@@ -108,7 +113,7 @@ public class TaskDao {
     }
 
     /**
-     * Function which update state of task in database
+     * Method that updates a task
      * @param id
      */
     public void updateTaskState(Long id, String state) {
@@ -122,7 +127,7 @@ public class TaskDao {
     }
 
     /**
-     * Function which delete task by ID from database
+     * Method that delete a task
      * @param id
      */
     public void deleteTaskById(Long id) {

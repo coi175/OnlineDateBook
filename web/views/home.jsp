@@ -22,10 +22,9 @@
 </head>
 <body>
    <div class="container">
-       <nav class="navbar">
+       <div class="title row d-flex">
            <h1>Your date book</h1>
-           <div>Настройки аккаунта</div>
-       </nav>
+       </div>
        <div class="row card_container">
            <!-- YESTERDAY -->
             <div id="yesterday" class="col">
@@ -35,7 +34,7 @@
 
                     </div>
 
-                    <progress id="task_progress" value="50" max="100"></progress>
+                    <progress id="task_progress" value="0" max="100"></progress>
                 </div>
             </div>
 
@@ -62,14 +61,14 @@
        </div>
        <div class="row card_switcher">
            <div class="col card_switcher_container">
-               <button class="change_button to_yesterday"></button>
-               <button class="change_button to_today"></button>
-               <button class="change_button to_tomorrow"></button>
+               <button onclick="showYesterday()" class="change_button to_yesterday"></button>
+               <button onclick="showToday()" class="change_button to_today"></button>
+               <button onclick="showTomorrow()" class="change_button to_tomorrow"></button>
            </div>
        </div>
 
        <!-- CREATE TASK BLOCK -->
-       <div id="create_task_block" class="task_screen_container row">
+       <div id="create_task_block" class="task_screen_container">
            <div class="task_screen col">
                <div class="close_button_block mb-2">
                    <button class="create_task_close_button" onclick="createTaskClose()"><i class="fa fa-close task_block_close_icon"></i></button>

@@ -7,18 +7,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
+/**
+ * Class for encrypt and validate password
+ */
 public final class PasswordSecurityService {
-    /*
-    public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException {
-        String password = "admin";
-        String securePassword = generateStrongPasswordHash(password);
-        System.out.println(securePassword);
-
-        boolean matches = validatePassword("admin", securePassword);
-        System.out.println(matches);
-    }
-    */
-
     public static String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException
     {
         int iterations = 1000;

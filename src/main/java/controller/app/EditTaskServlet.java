@@ -15,6 +15,9 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+/**
+ * Servlet that handles the user's request to edit a task
+ */
 @WebServlet(name = "EditTaskServlet", urlPatterns = "/editTask")
 public class EditTaskServlet extends HttpServlet {
     @Override

@@ -3,6 +3,9 @@ package model;
 import java.sql.Time;
 import java.sql.Date;
 
+/**
+ * Model class for Task entity
+ */
 public class Task {
     private Long id;
     private String title;

@@ -3,6 +3,9 @@ package model;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class for the validation of information about user (username, email, password)
+ */
 public final class ValidationService {
     public static boolean validateUsername(String username) {
         String regex = "^[a-zA-Z0-9]+$";

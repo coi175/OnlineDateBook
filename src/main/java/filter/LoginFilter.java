@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Filter for login
+ */
 @WebFilter(urlPatterns = {"/*"})
 public class LoginFilter implements Filter {
     @Override
@@ -21,18 +24,22 @@ public class LoginFilter implements Filter {
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/login";
         String registerURI = request.getContextPath() + "/register";
-        //String startPageURI = request.getContextPath() + "/";
 
+        // if user is logged
         boolean isLogged = session != null && session.getAttribute("user") != null;
+        // if user try to enter to the login page
         boolean loginRequest = request.getRequestURI().equals(loginURI);
-        //boolean startPageRequest = request.getRequestURI().equals(startPageURI);
+        // if user try to enter to the register page
         boolean registerRequest = request.getRequestURI().equals(registerURI);
+        // if app try to get some resource
         boolean publicResources = request.getRequestURI().endsWith(".css") || request.getRequestURI().endsWith(".js") || request.getRequestURI().endsWith(".jpg");
 
-        if(isLogged || loginRequest || registerRequest || publicResources /*|| startPageRequest*/) {
+        // then filter allow to enter
+        if(isLogged || loginRequest || registerRequest || publicResources) {
             chain.doFilter(request, response);
         }
         else {
+            // else app send redirect to the login page
             response.sendRedirect(loginURI);
         }
     }
