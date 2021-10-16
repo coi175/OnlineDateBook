@@ -66,7 +66,7 @@ function getAllTasks() {
                             "                            <div class=\"task_id\">" + task.id + "</div>\n" +
                             "                            <div onclick=\"openShowTaskBlock(this)\" class=\"task_text\">\n" +
                             "                                <p>" + taskText + "</p>\n" +
-                            "                            </div>\n" +
+                            "                           </div>\n" +
                             "                            <div class=\"task_buttons\">\n" +
                             "                                <p><i class=\"fa fa-window-close fault_icon\"></i></p>\n" +
                             "                            </div>\n" +
